@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  www:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8003:80"
+    volumes:
+      - ./www:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - netflix_network
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: shivam
+      MYSQL_DATABASE: login
+      MYSQL_USER: shivam
+      MYSQL_PASSWORD: shivam
+    ports:
+      - "3309:3309"
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
+      - db_data:/var/lib/mysql
+    networks:
+      - netflix_network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "85:80"
+    environment:
+      MYSQL_ROOT_PASSWORD: shivam
+      MYSQL_USER: shivam
+      MYSQL_PASSWORD: shivam
+      PMA_HOST: db  # Add this line to specify the MySQL hostname
+    networks:
+      - netflix_network
+    depends_on:
+      - db
+
+networks:
+  netflix_network:
+
+volumes:
+  db_data:
