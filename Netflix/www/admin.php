@@ -26,7 +26,7 @@ include("connect.php");
         <?php
       if(isset($_POST['btn_img']))
       {
-        $con = mysqli_connect("localhost","root","","login");
+        $con = mysqli_connect("db","shivam","shivam","login");
 
         $filename = $_FILES["choosefile"]["name"];
         $tempfile = $_FILES["choosefile"]["tmp_name"];
@@ -84,7 +84,7 @@ include("connect.php");
             </tr>
 
             <?php
-            $conn = mysqli_connect("localhost","root","","login");
+            $conn = mysqli_connect("db","shivam","shivam","login");
             $sql2 = "SELECT*FROM `images` WHERE 1";
             $result2 = mysqli_query($conn, $sql2);
             while($fetch = mysqli_fetch_assoc($result2))
