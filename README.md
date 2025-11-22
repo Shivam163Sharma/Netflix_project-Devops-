@@ -152,4 +152,4 @@ End-to-End Integration: Demonstrates mastery of development, testing, automation
 
 🖼️ 6. Screenshots / Demos
 
-Example:
+![Netflix Page](https://github.com/Shivam163Sharma/Netflix_project-Devops-/blob/main/Netflix%20Page.png)
